@@ -1,0 +1,43 @@
+﻿@model IEnumerable<WebCRUDMVCSQL.Models.Produto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Estoque</h1>
+
+<p>
+    <a asp-action="Create" style="text-decoration: none;">
+        <i class="fa-solid fa-plus"></i>
+        Novo Produto
+    </a>
+</p>
+
+<table class="table table-dark table-hover">
+    <thead>
+        <tr>
+            <th># ID</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa-solid fa-edit"></i></a> |
+                <a asp-action="Details" asp-route-id="@item.Id"><i class="fa-solid fa-eye"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.Id"><i class="fa-solid fa-trash"></i></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
